@@ -82,7 +82,7 @@ window.AMIER_DATA = {
       kind: "Brand Site",
       cat: "web",
       blurb: "Zero-sugar brand site with a real 3D can via model-viewer — type-safe Lit.",
-      live: "https://diet-soda.vercel.app",
+      live: "https://diet-soda-blush.vercel.app",
       repo: "https://github.com/Xerox1010555/diet-soda",
       shot: "/shots/diet.jpg",
     },
