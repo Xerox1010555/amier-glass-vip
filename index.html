@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMIER — VIP Glass Studio · Full-Stack ✱ 3D Engineer</title>
+<meta name="description" content="Amier — full-stack developer & 3D engineer. 12 live deployments: 3D showrooms, configurators, boutiques and AI products. The VIP glass edition of the portfolio.">
+<meta name="theme-color" content="#04060b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AMIER — VIP Glass Studio">
+<meta property="og:description" content="Full-Stack Developer ✱ 3D Engineer — 12 live deployments, openable right now. The glass edition.">
+<meta property="og:url" content="https://amier-glass-vip.vercel.app">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+
+<div class="veil" id="veil" aria-hidden="true">
+  <div class="veil-card">
+    <div class="veil-mark">AMIER<span>✱</span></div>
+    <div class="veil-bar"><i></i></div>
+    <div class="veil-tip">POLISHING THE GLASS</div>
+  </div>
+</div>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="aura" aria-hidden="true"></div>
+<div class="cursor-glow" id="cglow" aria-hidden="true"></div>
+<aside class="rail" aria-hidden="true"><i id="railBar"></i></aside>
+
+<header class="nav glass" aria-label="Main">
+  <a class="logo" href="#top">AMIER<span class="ast">✱</span><b>Glass</b></a>
+  <nav class="nav-links">
+    <a href="#work">Index</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="https://github.com/Xerox1010555" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </nav>
+  <div class="nav-right">
+    <span id="clock" class="clock mono">CAI --:--</span>
+    <a class="nav-cta" href="https://amier-3d-portfolio.vercel.app/cv-amier.pdf" target="_blank" rel="noreferrer">CV ↓</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <span class="chip reveal"><i class="dot"></i> Available for hire · Remote · Worldwide</span>
+      <h1 class="hero-name reveal goldtext" style="--d:.08s">AMIER<span class="ast">✱</span></h1>
+      <div class="hero-roles reveal" style="--d:.16s">
+        <span class="role">Full-Stack Developer</span>
+        <span class="ast">✱</span>
+        <span class="role hollow">3D Engineer</span>
+      </div>
+      <p class="hero-sub reveal" style="--d:.24s">
+        Interfaces polished like glass, back-ends that never crack, 3D that cuts like a gemstone.
+        Below — the VIP gallery: every piece is real and running. One glide each.
+      </p>
+      <div class="hero-cta reveal" style="--d:.32s">
+        <a class="btn btn-gold" href="#work">Enter the gallery ↓</a>
+        <a class="btn" href="https://wa.me/201008655235?text=Hello%20Amier%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer">WhatsApp →</a>
+      </div>
+      <div class="hero-chips reveal" style="--d:.4s">
+        <b>12</b><span>live deployments</span>
+        <i></i>
+        <b>15</b><span>project repos</span>
+        <i></i>
+        <b>4+</b><span>years shipping</span>
+        <i></i>
+        <b>&lt;24h</b><span>reply time</span>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">GLIDE ↓</div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="mq"></div></div>
+
+  <section class="work" id="work">
+    <div class="work-head">
+      <div>
+        <span class="kicker reveal">The VIP index</span>
+        <h2 class="h2 reveal" style="--d:.08s">13 builds in the gallery.</h2>
+        <p class="lead reveal" style="--d:.16s">Twelve of them are live right now — every card opens the real thing, not a mockup.</p>
+      </div>
+      <div class="filters reveal" style="--d:.2s" id="filters" role="group" aria-label="Filter projects"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="band glass reveal" aria-label="Studio facts">
+    <div class="band-item"><b class="goldtext">12</b><span>Live deployments</span></div>
+    <div class="band-item"><b class="goldtext">15</b><span>Public repositories</span></div>
+    <div class="band-item"><b class="goldtext">4+</b><span>Years shipping</span></div>
+    <div class="band-item"><b class="goldtext">&lt;24h</b><span>Reply, always</span></div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <span class="kicker reveal">The studio</span>
+        <h2 class="h2 reveal" style="--d:.08s">Built like a boutique.<br>Shipped like a machine.</h2>
+        <p class="reveal" style="--d:.16s">
+          I'm <strong>Amier</strong> — a full-stack developer & 3D engineer. I run a private
+          practice the way an atelier does: few pieces, excessive finish, everything handed
+          over working — code, domain, deployment, uptime.
+        </p>
+        <p class="reveal" style="--d:.22s">
+          Front end: <strong>pixel-perfect, accessible interfaces</strong> with real motion.
+          Back end: <strong>hardened APIs, disciplined data models</strong>. And a 3D pipeline
+          that turns products into places you walk through. Clever is not enough — it has to
+          <strong class="goldtext-sm">behave in production</strong>.
+        </p>
+        <div class="services">
+          <div class="srow reveal" style="--d:.26s"><span class="num goldtext-sm">01</span><div><b>3D & Immersive Web</b><span>Three.js / R3F showrooms, configurators and procedural worlds.</span></div></div>
+          <div class="srow reveal" style="--d:.3s"><span class="num goldtext-sm">02</span><div><b>Full-Stack Platforms</b><span>Next.js front-ends, hardened APIs, real databases, real auth.</span></div></div>
+          <div class="srow reveal" style="--d:.34s"><span class="num goldtext-sm">03</span><div><b>AI Products</b><span>Voice lessons, assistants, tool-calling — wired to real accounts.</span></div></div>
+          <div class="srow reveal" style="--d:.38s"><span class="num goldtext-sm">04</span><div><b>End-to-End Delivery</b><span>Idea → design → build → deploy → uptime. One accountable pair of hands.</span></div></div>
+        </div>
+      </div>
+      <div class="about-side">
+        <div class="side-card glass reveal" style="--d:.3s">
+          <span class="mono side-k">NOW</span>
+          <p>Open for <strong>full-time roles, grants and freelance</strong> engagements. Cairo-based, remote worldwide, GMT+2.</p>
+        </div>
+        <div class="side-card glass reveal" style="--d:.4s">
+          <span class="mono side-k">PORTFOLIO SIBLINGS</span>
+          <p>
+            <a href="https://amier-3d-portfolio.vercel.app" target="_blank" rel="noreferrer">Paper & Ink edition ↗</a><br>
+            This glass edition is the same CV in a different jewel case.
+          </p>
+        </div>
+        <div class="side-card glass reveal" style="--d:.5s">
+          <span class="mono side-k">SECURITY</span>
+          <p>This gallery ships behind a strict CSP, HSTS and no third-party trackers. Ask me about the security pass each project got.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <span class="kicker reveal">Correspondence</span>
+      <h2 class="h2 reveal" style="--d:.08s">Let's craft something <em class="goldtext">legendary</em>.</h2>
+      <p class="lead reveal" style="--d:.16s">Send the brief — I bring the whole stack, and the polish comes free.</p>
+      <div class="mailrow glass reveal" style="--d:.24s">
+        <div>
+          <b id="mailTxt">abddo4443@gmail.com</b>
+          <span class="mono lbl">Fastest channel · replies within 24h</span>
+        </div>
+        <button class="act" id="copyMail" type="button">Copy</button>
+      </div>
+      <div class="crow reveal" style="--d:.3s">
+        <a class="btn btn-gold" href="https://wa.me/201008655235?text=Hello%20Amier%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer">WhatsApp →</a>
+        <a class="btn" href="https://t.me/Amier1t5" target="_blank" rel="noreferrer">Telegram →</a>
+        <a class="btn" href="https://github.com/Xerox1010555" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a class="btn" href="https://amier-3d-portfolio.vercel.app/cv-amier.pdf" target="_blank" rel="noreferrer">CV ↓</a>
+      </div>
+      <div class="cnote mono reveal" style="--d:.36s">
+        <span><b class="ast">✱</b> Available for hire</span><span>REPLY &lt; 24 H</span><span>REMOTE · WORLDWIDE · GMT+2</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="foot-top">
+    <b class="bigmark goldtext">AMIER<span class="ast">✱</span>Glass</b>
+    <p>Design ⋅ Engineering ⋅ Deployment — all in-house, all under one name.</p>
+  </div>
+  <div class="foot-bottom mono">
+    <span>© 2026 AMIER — Glass Edition</span>
+    <span><a href="https://github.com/Xerox1010555" target="_blank" rel="noreferrer">GitHub ↗</a> · <a href="https://amier-3d-portfolio.vercel.app" target="_blank" rel="noreferrer">Paper & Ink edition ↗</a></span>
+    <span>Cairo · printing & polishing worldwide</span>
+  </div>
+</footer>
+
+<script src="/js/data.js"></script>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>
