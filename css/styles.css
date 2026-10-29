@@ -61,7 +61,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .ast { color: var(--gold-b); }
 
 /* fixed background canvas + auras */
-#bg { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; }
+#bg { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.4s ease; }
+#bg.bg-in { opacity: 1; }
 .aura { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
 .aura::before {
   content: ""; position: absolute; left: -10%; top: -20%; width: 60vmax; height: 60vmax;
@@ -89,6 +90,9 @@ main { position: relative; z-index: 3; }
 /* fail-open: without JS everything is visible + veil is gone */
 .nojs .reveal { opacity: 1; transform: none; filter: none; }
 .nojs .veil { display: none; }
+/* ?nov=1 screenshot/print mode: veil gone + content visible even if app.js dies */
+.nov .veil { opacity: 0 !important; visibility: hidden !important; animation: none; }
+.nov .reveal { opacity: 1; transform: none; filter: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; filter: none; } }
 
 /* glass primitive */
@@ -106,6 +110,9 @@ main { position: relative; z-index: 3; }
   background: var(--bg); transition: opacity 0.7s ease, visibility 0.7s;
 }
 .veil.done { opacity: 0; visibility: hidden; }
+/* layer 4: pure-CSS lift — the veil opens even if every script fails */
+.veil { animation: veilout 0.9s ease 2.3s forwards; }
+@keyframes veilout { to { opacity: 0; visibility: hidden; } }
 .veil-card { display: grid; place-items: center; gap: 20px; text-align: center; }
 .veil-mark { font-family: var(--f-d); font-size: 52px; font-weight: 600; letter-spacing: 0.02em; }
 .veil-mark span { color: var(--gold-b); }

@@ -1,7 +1,7 @@
 /* AMIER — Glass Edition · interactivity + 3D glass scene
    Glide everywhere: heavy lerp, no snapping. */
-import * as THREE from "three";
-import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+import * as THREE from "/vendor/three/three.module.js";
+import { RoomEnvironment } from "/vendor/three/addons/environments/RoomEnvironment.js";
 
 const D = window.AMIER_DATA;
 const $ = (s) => document.querySelector(s);
@@ -15,10 +15,11 @@ try {
   }
 } catch { /* noop */ }
 
-/* ---------- preloader ---------- */
+/* ---------- preloader (backup layer; js/veil.js is primary) ---------- */
 const veil = $("#veil");
-window.addEventListener("load", () => setTimeout(() => veil.classList.add("done"), 350));
-setTimeout(() => veil.classList.add("done"), 3200); /* safety */
+const hideVeil = () => { if (veil) veil.classList.add("done"); };
+window.addEventListener("load", () => setTimeout(hideVeil, 350));
+setTimeout(hideVeil, 3200); /* safety */
 
 /* ---------- reveal (glide-in) ---------- */
 const io = new IntersectionObserver((es) => {
@@ -132,6 +133,7 @@ try {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.8));
   renderer.setSize(innerWidth, innerHeight);
+  canvas.classList.add("bg-in");
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(46, innerWidth / innerHeight, 0.1, 60);
@@ -243,3 +245,6 @@ try {
   /* no WebGL → velvet gradient already there via CSS */
   canvas.style.display = "none";
 }
+
+/* the app module reached the end — tells veil.js it can stay in "app mode" */
+window.__appOk = true;
