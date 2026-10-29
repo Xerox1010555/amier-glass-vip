@@ -5,6 +5,12 @@
   var hide = function () { if (veil) veil.classList.add("done"); };
   /* JS is alive — hand reveal control back to the app */
   document.documentElement.classList.remove("nojs");
+  /* ?nov=1 → screenshot/print mode: skip the veil entirely */
+  try {
+    if (new URLSearchParams(location.search).has("nov")) {
+      hide();
+    }
+  } catch {}
   window.addEventListener("load", function () { setTimeout(hide, 350); });
   setTimeout(hide, 2600);
 })();

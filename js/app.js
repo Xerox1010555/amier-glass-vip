@@ -8,6 +8,13 @@ const $ = (s) => document.querySelector(s);
 const lerp = (a, b, t) => a + (b - a) * t;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* ?nov=1 (screenshot/print mode): everything visible immediately */
+try {
+  if (new URLSearchParams(location.search).has("nov")) {
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+  }
+} catch { /* noop */ }
+
 /* ---------- preloader ---------- */
 const veil = $("#veil");
 window.addEventListener("load", () => setTimeout(() => veil.classList.add("done"), 350));
