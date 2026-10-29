@@ -3,6 +3,8 @@
 (function () {
   var veil = document.getElementById("veil");
   var hide = function () { if (veil) veil.classList.add("done"); };
+  /* JS is alive — hand reveal control back to the app */
+  document.documentElement.classList.remove("nojs");
   window.addEventListener("load", function () { setTimeout(hide, 350); });
   setTimeout(hide, 2600);
 })();
